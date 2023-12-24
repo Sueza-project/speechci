@@ -7,14 +7,16 @@ import { useState } from "react";
 
 export default function ReadAudio() {
   const recorderControls = useAudioRecorder();
-  // const [records, updateRecords] = useState([]);
+  const [file, setFile] = useState(null);
 
   const sendAudioToServer = async (blob: Blob) => {
     try {
       const formData = new FormData();
-      formData.append("audioFile", blob, "recordedAudio.wav");
+      formData.append("file_upload", blob, "recordedAudio.wav");
 
-      const response = await fetch("your-server-endpoint", {
+      const endpoint = "http://localhost:8000/uploadfile/";
+
+      const response = await fetch(endpoint, {
         method: "POST",
         body: formData,
       });
@@ -48,7 +50,6 @@ export default function ReadAudio() {
       />
       <button onClick={recorderControls.startRecording}>Start Recording</button>
       <button onClick={recorderControls.stopRecording}>Stop recording</button>
-
       <p>{recorderControls.isRecording ? "Recording..." : ""}</p>
     </div>
   );
