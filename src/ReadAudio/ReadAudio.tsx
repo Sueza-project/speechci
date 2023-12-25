@@ -8,6 +8,8 @@ import { useState } from "react";
 export default function ReadAudio() {
   const recorderControls = useAudioRecorder();
   const [file, setFile] = useState(null);
+  const [status, setStatus] = useState("");
+  const [records, updateRecords] = useState([]);
 
   const sendAudioToServer = async (blob: Blob) => {
     try {
@@ -23,11 +25,14 @@ export default function ReadAudio() {
 
       if (response.ok) {
         console.log("Audio sent to server successfully!");
+        setStatus("Status: Audio sent successfully!");
       } else {
         console.error("Failed to send audio to server");
+        setStatus("Status: Failed to send audio to server!");
       }
     } catch (error) {
       console.error("Error sending audio to server:", error);
+      setStatus("Status: Failed to send audio to server!");
     }
   };
 
@@ -36,21 +41,77 @@ export default function ReadAudio() {
     const audio = document.createElement("audio");
     audio.src = url;
     audio.controls = true;
-    document.body.appendChild(audio);
+    // Create a container div to center the audio element
+    const container = document.createElement("div");
+    container.style.display = "flex";
+    container.style.justifyContent = "center";
+    container.appendChild(audio);
+
+    // Append the container to the body
+    document.body.appendChild(container);
+
+    // document.body.appendChild(audio);
     sendAudioToServer(blob);
   };
 
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: 400,
+        margin: "auto",
+        padding: 20,
+        backgroundColor: "#f0f0f0",
+        borderRadius: 10,
+        boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+      }}
+    >
       <AudioRecorder
         onRecordingComplete={(blob) => addAudioElement(blob)}
         recorderControls={recorderControls}
         downloadFileExtension="wav"
-        downloadOnSavePress={true}
+        downloadOnSavePress={false}
+        showVisualizer={true}
       />
-      <button onClick={recorderControls.startRecording}>Start Recording</button>
-      <button onClick={recorderControls.stopRecording}>Stop recording</button>
-      <p>{recorderControls.isRecording ? "Recording..." : ""}</p>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          marginTop: 20,
+        }}
+      >
+        <button
+          style={{
+            padding: 10,
+            fontSize: 16,
+            backgroundColor: "#4CAF50",
+            color: "white",
+            border: "none",
+            borderRadius: 5,
+            cursor: "pointer",
+          }}
+          onClick={recorderControls.startRecording}
+        >
+          Start Recording
+        </button>
+        <button
+          style={{
+            padding: 10,
+            fontSize: 16,
+            backgroundColor: "#4CAF50",
+            color: "white",
+            border: "none",
+            borderRadius: 5,
+            cursor: "pointer",
+          }}
+          onClick={recorderControls.stopRecording}
+        >
+          Stop Recording
+        </button>
+      </div>
+      <p style={{ marginTop: 10, fontSize: 16 }}>
+        {recorderControls.isRecording ? "Recording..." : ""}
+      </p>
+      <h1 style={{ marginTop: 20, fontSize: 24, color: "#333" }}>{status}</h1>
     </div>
   );
 }
