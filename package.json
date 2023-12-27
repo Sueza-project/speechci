@@ -3,19 +3,40 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mantine/carousel": "^7.3.2",
+    "@mantine/code-highlight": "^7.3.2",
+    "@mantine/core": "^7.3.2",
+    "@mantine/dates": "^7.3.2",
+    "@mantine/dropzone": "^7.3.2",
+    "@mantine/form": "^7.3.2",
+    "@mantine/hooks": "^7.3.2",
+    "@mantine/modals": "^7.3.2",
+    "@mantine/notifications": "^7.3.2",
+    "@mantine/nprogress": "^7.3.2",
+    "@mantine/spotlight": "^7.3.2",
+    "@mantine/tiptap": "^7.3.2",
+    "@mantinex/mantine-logo": "^1.0.1",
+    "@tabler/icons-react": "^2.44.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@tiptap/extension-link": "^2.1.13",
+    "@tiptap/react": "^2.1.13",
+    "@tiptap/starter-kit": "^2.1.13",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.68",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
+    "dayjs": "^1.11.10",
+    "embla-carousel-react": "^7.1.0",
     "react": "^18.2.0",
     "react-audio-voice-recorder": "^2.2.0",
     "react-dom": "^18.2.0",
     "react-media-recorder": "^1.6.6",
     "react-native-fs": "^2.20.0",
+    "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
+    "react-textarea-autosize": "^8.5.3",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
@@ -42,5 +63,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "postcss": "^8.4.32",
+    "postcss-preset-mantine": "^1.12.2",
+    "postcss-simple-vars": "^7.0.1"
   }
 }
