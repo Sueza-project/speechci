@@ -28,13 +28,16 @@ class Item(BaseModel):
 UPLOAD_DIR = Path() / 'dataset'
 
 app = FastAPI()
-origins = "http://10.11.12.230:3000/"
+origins = [
+    "*", # Allow all origins
+] # specific which domaine is permited
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins = origins,
     allow_credentials=True,
-    allow_methods=['GET'],
-    allow_headers=['Content-Type','application/xml']
+    allow_methods=["*"],
+    allow_headers=["*"]
 )
 
 filename = "init"
@@ -49,12 +52,10 @@ async def create_upload_file(file_upload: UploadFile):
         f.write(data)
     return { "filenames": file_upload.filename}
 
-@app.post("/items/")
-async def create_item(item: Item):
-    return item
 
-@app.get("/")
-async def translate_():
+@app.get("/translate", tags=["translate"])
+async def get_translate() -> dict:
+
     dataset = load_dataset("audiofolder", data_dir="dataset/data/", drop_metadata=True)
     dataset['train']['audio']
     ds= dataset.cast_column("audio", Audio(sampling_rate=16_000))['train']['audio']
@@ -67,7 +68,7 @@ async def translate_():
     )
     translation = processor.batch_decode(generated_ids, skip_special_tokens=True)
 
-    return {"message": translation[0]}
+    return {"data":translation[0]}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=5049)

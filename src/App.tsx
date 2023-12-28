@@ -8,8 +8,7 @@ export default function App() {
   return (
     <div>
       <Navbar />;
-      <AudioRecord />;
-      <Translate />
+      <AudioRecord />;{/* <Translate />; */}
     </div>
   );
 }

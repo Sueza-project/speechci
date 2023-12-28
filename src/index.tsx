@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <MantineProvider>
+  <MantineProvider theme={theme}>
     <React.StrictMode>
       <App />
     </React.StrictMode>

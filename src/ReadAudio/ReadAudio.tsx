@@ -1,13 +1,15 @@
 import * as React from "react";
 import { AudioRecorder, useAudioRecorder } from "react-audio-voice-recorder";
 import { useState } from "react";
-
+import Translate from "../Translate/Translate";
 // Blob is short for “Binary Large Object.”
 //” This data type holds multimedia objects like images and videos, GIFs, and audio. It stores binary data as a single entity.
 
+// ... (other imports)
+
 export default function ReadAudio() {
   const recorderControls = useAudioRecorder();
-  const [file, setFile] = useState(null);
+  const [state, setState] = useState(false); // Renamed setstate to setState for consistency
   const [status, setStatus] = useState("");
   const [records, updateRecords] = useState([]);
 
@@ -16,7 +18,7 @@ export default function ReadAudio() {
       const formData = new FormData();
       formData.append("file_upload", blob, "recordedAudio.wav");
 
-      const endpoint = "http://localhost:8000/uploadfile/";
+      const endpoint = "http://localhost:5049/uploadfile/";
 
       const response = await fetch(endpoint, {
         method: "POST",
@@ -26,13 +28,16 @@ export default function ReadAudio() {
       if (response.ok) {
         console.log("Audio sent to server successfully!");
         setStatus("Status: Audio sent successfully!");
+        setState(true);
       } else {
         console.error("Failed to send audio to server");
         setStatus("Status: Failed to send audio to server!");
+        setState(false);
       }
     } catch (error) {
       console.error("Error sending audio to server:", error);
       setStatus("Status: Failed to send audio to server!");
+      setState(false);
     }
   };
 
@@ -50,68 +55,70 @@ export default function ReadAudio() {
     // Append the container to the body
     document.body.appendChild(container);
 
-    // document.body.appendChild(audio);
     sendAudioToServer(blob);
   };
 
   return (
-    <div
-      style={{
-        maxWidth: 400,
-        margin: "auto",
-        padding: 20,
-        backgroundColor: "#f0f0f0",
-        borderRadius: 10,
-        boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-      }}
-    >
-      <AudioRecorder
-        onRecordingComplete={(blob) => addAudioElement(blob)}
-        recorderControls={recorderControls}
-        downloadFileExtension="wav"
-        downloadOnSavePress={false}
-        showVisualizer={true}
-      />
+    <div>
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-around",
-          marginTop: 20,
+          maxWidth: 400,
+          margin: "auto",
+          padding: 20,
+          backgroundColor: "#f0f0f0",
+          borderRadius: 10,
+          boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <button
+        <AudioRecorder
+          onRecordingComplete={(blob) => addAudioElement(blob)}
+          recorderControls={recorderControls}
+          downloadFileExtension="wav"
+          downloadOnSavePress={false}
+          showVisualizer={true}
+        />
+        <div
           style={{
-            padding: 10,
-            fontSize: 16,
-            backgroundColor: "#4CAF50",
-            color: "white",
-            border: "none",
-            borderRadius: 5,
-            cursor: "pointer",
+            display: "flex",
+            justifyContent: "space-around",
+            marginTop: 20,
           }}
-          onClick={recorderControls.startRecording}
         >
-          Start Recording
-        </button>
-        <button
-          style={{
-            padding: 10,
-            fontSize: 16,
-            backgroundColor: "#4CAF50",
-            color: "white",
-            border: "none",
-            borderRadius: 5,
-            cursor: "pointer",
-          }}
-          onClick={recorderControls.stopRecording}
-        >
-          Stop Recording
-        </button>
+          <button
+            style={{
+              padding: 10,
+              fontSize: 16,
+              backgroundColor: "#4CAF50",
+              color: "white",
+              border: "none",
+              borderRadius: 5,
+              cursor: "pointer",
+            }}
+            onClick={recorderControls.startRecording}
+          >
+            Start Recording
+          </button>
+          <button
+            style={{
+              padding: 10,
+              fontSize: 16,
+              backgroundColor: "#4CAF50",
+              color: "white",
+              border: "none",
+              borderRadius: 5,
+              cursor: "pointer",
+            }}
+            onClick={recorderControls.stopRecording}
+          >
+            Stop Recording
+          </button>
+        </div>
+        <p style={{ marginTop: 10, fontSize: 16 }}>
+          {recorderControls.isRecording ? "Recording..." : ""}
+        </p>
+        <h1 style={{ marginTop: 20, fontSize: 24, color: "#333" }}>{status}</h1>
       </div>
-      <p style={{ marginTop: 10, fontSize: 16 }}>
-        {recorderControls.isRecording ? "Recording..." : ""}
-      </p>
-      <h1 style={{ marginTop: 20, fontSize: 24, color: "#333" }}>{status}</h1>
+      {state && <Translate />}
     </div>
   );
 }
