@@ -48,3 +48,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 # Run fastapi 
 `uvicorn main:app --reload`
+
+# Install 
+`sudo apt-get install ffmpeg` because, the audio receive from the front end is not well formated in wav format.
+

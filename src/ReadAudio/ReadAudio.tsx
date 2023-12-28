@@ -73,8 +73,8 @@ export default function ReadAudio() {
         <AudioRecorder
           onRecordingComplete={(blob) => addAudioElement(blob)}
           recorderControls={recorderControls}
-          downloadFileExtension="wav"
-          downloadOnSavePress={false}
+          downloadOnSavePress={true}
+          downloadFileExtension="mp3"
           showVisualizer={true}
         />
         <div
@@ -122,3 +122,5 @@ export default function ReadAudio() {
     </div>
   );
 }
+
+// to do : refresh the navigator every time a new record is made,
