@@ -1,3 +1,37 @@
+# Project Description
+
+## User Interface Development:
+
+Developed an intuitive user interface (UI) using the React framework.
+
+## Audio Collection Feature:
+
+Implemented a functionality to collect audio input from users within the UI.
+
+## API Communication:
+
+Established seamless communication with the back-end through RESTful APIs to facilitate the translation process.
+
+## Language Translation:
+
+Utilized the React UI and REST API to translate collected audio content into various African local languages.
+
+## Speech-to-Text Model Integration:
+
+Integrated and deployed a fine-tuned speech-to-text model on Linode cloud computing infrastructure.
+
+## Cloud Deployment through Kubernetes:
+
+Employed Kubernetes cluster on Linode for efficient deployment of the developed application and its components.
+
+## Continuous Integration Setup:
+
+Implemented a robust continuous integration pipeline using Jenkins to streamline development, testing, and deployment processes.
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
