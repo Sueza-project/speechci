@@ -73,7 +73,7 @@ export default function ReadAudio() {
         <AudioRecorder
           onRecordingComplete={(blob) => addAudioElement(blob)}
           recorderControls={recorderControls}
-          downloadOnSavePress={true}
+          downloadOnSavePress={false}
           downloadFileExtension="mp3"
           showVisualizer={true}
         />
