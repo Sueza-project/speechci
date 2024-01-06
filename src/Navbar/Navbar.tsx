@@ -1,7 +1,5 @@
-import { Button } from "@mantine/core";
-
 function Navbar() {
-  return <Button variant="filled">Navbar to do!!!;
+  return <h1>Navbar to do!!!</h1>;
 }
 
-export default Navbar
+export default Navbar;
