@@ -30,6 +30,10 @@ Implemented a robust continuous integration pipeline using Jenkins to streamline
 
 
 
+# Intall package
+`npm install`
+`npm install --save-dev @babel/plugin-proposal-private-property-in-object`
+
 
 
 # Getting Started with Create React App
