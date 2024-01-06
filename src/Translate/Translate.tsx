@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Stack } from "@mantine/core";
+import { useState, useEffect } from "react";
 
 const MyReactComponent = () => {
   const [result, setResult] = useState([]);

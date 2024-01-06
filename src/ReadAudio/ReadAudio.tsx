@@ -1,4 +1,3 @@
-import * as React from "react";
 import { AudioRecorder, useAudioRecorder } from "react-audio-voice-recorder";
 import { useState } from "react";
 import Translate from "../Translate/Translate";
@@ -11,7 +10,6 @@ export default function ReadAudio() {
   const recorderControls = useAudioRecorder();
   const [state, setState] = useState(false); // Renamed setstate to setState for consistency
   const [status, setStatus] = useState("");
-  const [records, updateRecords] = useState([]);
 
   const sendAudioToServer = async (blob: Blob) => {
     try {
