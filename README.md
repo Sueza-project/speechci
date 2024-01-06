@@ -88,4 +88,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 # Configure jenkins auto-trigger for Github
-[Youtube](https://www.youtube.com/watch?v=ZiHMsEKklKQ&t=272s)
+[Youtube Tutorial](https://www.youtube.com/watch?v=ZiHMsEKklKQ&t=272s)
