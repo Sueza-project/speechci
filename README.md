@@ -86,3 +86,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 # Install 
 `sudo apt-get install ffmpeg` because, the audio receive from the front end is not well formated in wav format.
 
+
+# Configure jenkins auto-trigger for Github
+[Youtube](https://www.youtube.com/watch?v=ZiHMsEKklKQ&t=272s)
