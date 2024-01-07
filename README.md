@@ -91,5 +91,19 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 `sudo apt-get install ffmpeg` because, the audio receive from the front end is not well formated in wav format.
 
 
+# Build react app docker
+`docker build -t speechci-audio .`
+# Run container with port mapping
+`docker run -dp 8000:3000 speechci-audio `
+
+# PORT lessing by react apps to communicate with fastapi 
+`5049`
+
+
 # Configure jenkins auto-trigger for Github
 [Youtube Tutorial](https://www.youtube.com/watch?v=ZiHMsEKklKQ&t=272s)
+
+
+
+
+# reference foro bug on jenkins  

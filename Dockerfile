@@ -1,33 +1,27 @@
-#chose the node image
-FROM node:18-alpine 
-WORKDIR '/app'
+# Dockerfile
 
+# Use an existing node alpine image as a base image.
+FROM node:20-alpine
+
+# Set the working directory.
+WORKDIR /app
+
+# Copy the package.json file.
 #copy package.json
-COPY package.json .
-COPY package-lock.json .
-COPY postcss.config.cjs .
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+COPY tsconfig.json tsconfig.json
+# COPY ngnix.conf .
 
-# RUN npm install --save-dev webpack
+# # Install application dependencies using clean installation 
+RUN npm ci
 
-# Install all our packages
-RUN npm install 
+# Copy the rest of the application files.
+COPY public/ public
+COPY src/ src
 
-COPY public/ /app/public
-COPY src/ /app/src
-COPY package.json /app/
-COPY package-lock.json /app/
-COPY postcss.config.cjs /app/
-
-
-# Here, we are implementing the multi-stage build. it greatly reduces our
-# size, it also won't  expose our code in our container as we will only copy
-# the build output fron the first stage 
-
-
-# Build the project
-
-# Begining of the second stage
-
+# Expose the port.
 EXPOSE 3000
 
-CMD ["npm","start"]
+# Run the application.
+CMD ["npm", "start"]
