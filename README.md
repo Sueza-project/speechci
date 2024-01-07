@@ -99,6 +99,16 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 # PORT lessing by react apps to communicate with fastapi 
 `5049`
 
+# Build and Run FastAPI docker image
+## Build
+`docker build -t fast . `
+## Run
+`docker run -d --name fast6 -p 5049:5049 fast`
+
+## test getfrom fastapi image
+`localhost:5049/hello`
+
+
 
 # Configure jenkins auto-trigger for Github
 [Youtube Tutorial](https://www.youtube.com/watch?v=ZiHMsEKklKQ&t=272s)

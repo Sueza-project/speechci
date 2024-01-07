@@ -1,11 +1,10 @@
 # FROM nvidia/cuda:11.0.3-base-ubuntu20.04
 FROM python:3.10-bullseye
 
-EXPOSE 5000
-# Keeps Python from generating .pyc files in the container
-ENV PYTHONDONTWRITEBYTECODE=1
-# Turns off buffering for easier container logging
-ENV PYTHONUNBUFFERED=1
+# # Keeps Python from generating .pyc files in the container
+# ENV PYTHONDONTWRITEBYTECODE=1
+# # Turns off buffering for easier container logging
+# ENV PYTHONUNBUFFERED=1
 
 # # Set environment variables
 # ENV DEBIAN_FRONTEND=noninteractive
@@ -29,15 +28,16 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Set the working directory
 WORKDIR /app
+COPY ./app /app/app
+COPY ./dataset /app/dataset
 
-COPY dataset .
-COPY tempAudio .
-COPY main.py main
-# EXPOSE 5049
+EXPOSE 5049
 
 
 # Set the entrypoint
-ENTRYPOINT [ "python3" ]
+# ENTRYPOINT [ "python3" ]
 
 
 # CMD ["python3", "main.py"]
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "5049"]

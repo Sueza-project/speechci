@@ -1,9 +1,10 @@
 from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path
-import os
 
 from datasets import load_dataset
+
+import os
 
 from typing import Union
 from pydantic import BaseModel
@@ -51,6 +52,11 @@ async def create_upload_file(file_upload: UploadFile):
     data = await file_upload.read()
     save_to = UPLOAD_DIR / file_upload.filename
 
+    isExist = os.path.exists(UPLOAD_DIR)
+    if not isExist:
+        # Create a new directory because it does not exist
+        os.makedirs(UPLOAD_DIR)
+
     with open(save_to,'wb') as f:
         f.write(data)
 
@@ -80,7 +86,12 @@ async def get_translate() -> dict:
 
     return {"data":translation[0]}
 
+
+@app.get("/hello", tags=["hello"])
+async def hello() -> dict:
+    return {"data":UPLOAD_DIR}
+
 # to do
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=5049)
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="127.0.0.1", port=5049)
