@@ -105,7 +105,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Run
 `docker run -d --name fast6 -p 5049:5049 fast`
 
-## test getfrom fastapi image
+## test get from fastapi run image
 `localhost:5049/hello`
 
 
