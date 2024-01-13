@@ -15,6 +15,7 @@
 
 #temporary file
 /temp
+/conf
 
 # misc
 .DS_Store

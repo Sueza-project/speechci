@@ -116,5 +116,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 
-## reference foro bug on jenkins 
+## [Docker registry for the audio image](https://hub.docker.com/repository/docker/baurice/speech-audio/general)
+## [Docker registry for the api image]()
  
