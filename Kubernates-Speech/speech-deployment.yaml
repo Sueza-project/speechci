@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: christian-deployment
+  labels:
+    app: speech-ci-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: speech-ci-test
+  template:
+    metadata:
+      labels:
+        app: speech-ci-test
+    spec:
+      containers:
+      - name: speech-ci
+        image: tedjochris96/speech-to-text:v1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+
