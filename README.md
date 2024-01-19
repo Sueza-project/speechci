@@ -108,6 +108,11 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## test get from fastapi run image
 `localhost:5049/hello`
 
+## Kubernetes command: 
+1) configure linode kube on linux `export KUBECONFIG=conf/speech-kubeconfig.yaml` 
+    * on windows `set KUBECONFIG=conf/speech-kubeconfig.yaml` 
+2) Test the number of nodes `kubctl get nodes`
+
 
 
 # Configure jenkins auto-trigger for Github
