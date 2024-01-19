@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: speechci-b
+  labels:
+    app: speechci-b
+spec:
+  replicas : 3
+  selector:
+    matchLabels:
+      app: speechci-b
+  template:
+    metadata:
+      labels:
+        app: speechci-b
+    spec:
+      containers:
+      - name: speechci-b
+        image: baurice/speech-audio:v1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000

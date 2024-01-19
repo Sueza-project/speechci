@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: speechci-b-service
+  annotations:
+    service.beta.kubernetes.io/linode-loadbalancer-throttle: "4"
+  labels:
+    app: speechci-b-service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 3000 ## container image port
+  selector:
+    app: speechci-b
+  sessionAffinity: None
