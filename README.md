@@ -96,7 +96,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 # Run container with port mapping
 `docker run -dp 8000:3000 speechci-audio `
 
-# PORT lessing by react apps to communicate with fastapi 
+# PORT listening by react apps to communicate with fastapi 
 `5049`
 
 # Build and Run FastAPI docker image
