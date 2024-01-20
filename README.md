@@ -115,12 +115,12 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 
-# Configure jenkins auto-trigger for Github
-[Youtube Tutorial](https://www.youtube.com/watch?v=ZiHMsEKklKQ&t=272s)
 
 
 
 
 ## [Docker registry for the audio image](https://hub.docker.com/repository/docker/baurice/speech-audio/general)
 ## [Docker registry for the api image]()
+
+## [A Step-by-Step Guide to Installing Tailwind CSS with React](https://medium.com/@ryaddev/build-responsive-navbar-with-tailwind-css-and-react-icons-3b13a272dec4)
  
