@@ -2,3 +2,5 @@ node_modules/
 api/
 npm-debug.log
 Kubernates-Speech/speech-kubeconfig.yaml
+build/
+```
