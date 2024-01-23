@@ -105,15 +105,36 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Run
 `docker run -d --name fast6 -p 5049:5049 fast`
 
+## Push docker image on docker-registry
+1) on windows machine 
+`docker tag speechci-api baurice/speechci-api:label`
+`docker push baurice/speechci-api:label`</s>
+
+2) on linux machine 
+ * Get docker image id: `docker container ls`
+ * commit the image : `docker container commit id baurice/speechci-api:label`
+ * push container image: ` docker image push baurice/speechci-api:label`
+
+
+
+
 ## test get from fastapi run image
 `localhost:5049/hello`
 
 ## Kubernetes command: 
 1) configure linode kube on linux `export KUBECONFIG=conf/speech-kubeconfig.yaml` 
     * on windows `set KUBECONFIG=conf/speech-kubeconfig.yaml` 
-2) Test the number of nodes `kubctl get nodes`
+2) Get the number of nodes running `kubctl get nodes`
+3) Start a pod with yaml file:  `kubectl apply -f file_name.yaml`
+4) Creat a load balancer: `kubectl apply -f service_name.yaml`
+5) Get all running deployments `kubectl get deployments`
+6) Edit running deployement `kubectl edit deployment depoleyment_name` 
+7) delete a running pod: `kubectl delete pod pod_name`
+8) Delete services:  `kubectl delete services`
 
+## [Install cert manager](https://cert-manager.io/docs/installation/kubectl/)
 
+## [kubectl cert-manager pluging](https://cert-manager.io/v1.0-docs/usage/kubectl-plugin/)
 
 
 
