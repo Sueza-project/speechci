@@ -19,7 +19,7 @@ COPY tailwind.config.js .
 
 # # Install application dependencies using clean installation 
 RUN npm ci
-RUN npm install react-icons --save
+#RUN npm install react-icons --save
 
 # Copy the rest of the application files.
 COPY public/ public
